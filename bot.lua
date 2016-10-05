@@ -35,10 +35,10 @@ tcp:send("NICK " .. botname .. " \r\n")
 tcp:send("USER " .. ident .. " * 8 :".. gecos .." \r\n")
 
 while true do
-    local s, status, partial = tcp:receive()
+    s, status, partial = tcp:receive()
     --print(s or partial)
-    	if status == "closed" then break end
-	s = explode(s," ")
+    if status == "closed" then break end
+        s = explode(s," ")
         --if s[4] then print(s[4].." est le 4") end 
         if (s[1] == "PING") then
 		tcp:send("PONG"..s[2])
@@ -49,7 +49,8 @@ while true do
             --print("OPPO")
             
             if file_exists("plugins/"..string.sub(s[4],3)..".lua") then
-                print("OKOK")
+                print("Opening script...")
+                --print(s)
                 dofile("plugins/"..string.sub(s[4],3)..".lua")
             end
     end
