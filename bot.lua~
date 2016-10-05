@@ -36,18 +36,17 @@ tcp:send("USER " .. ident .. " * 8 :".. gecos .." \r\n")
 
 while true do
     local s, status, partial = tcp:receive()
-    --print(s or partial)
+    print(s or partial)
     	if status == "closed" then break end
 	s = explode(s," ")
-        --if s[4] then print(s[4].." est le 4") end 
+        if s[4] then print(s[4].." est le 4") end 
         if (s[1] == "PING") then
 		tcp:send("PONG"..s[2])
         elseif ((s[2]=="376") or (s[2]=="422")) then
 		tcp:send("JOIN " .. channel .. " \r\n")
         elseif (s[4] and (string.match(s[4],"!"))) then
-            
-            --print("OPPO")
-            
+            print("OPPO")
+            msg("OUI") 
             if file_exists("plugins/"..string.sub(s[4],3)..".lua") then
                 print("OKOK")
                 dofile("plugins/"..string.sub(s[4],3)..".lua")
