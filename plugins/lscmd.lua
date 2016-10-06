@@ -1,0 +1,6 @@
+local list = assert(io.popen('/bin/echo /home/pi/bottos/plugins/*.lua'))
+local output = list:read()
+output = string.gsub(output,"/home/pi/bottos/plugins/"," ")
+output = string.gsub(output,".lua","")
+list:close()
+msg(output)

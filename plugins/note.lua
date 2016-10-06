@@ -8,7 +8,7 @@ end
 
 
 -- If setting a note
-if (s[6] == "=") then
+if ((s[6] == "=") and s[7] ) then
     notefile = io.open("plugins/notes.txt","r")
     notefile:seek("set")
 -- Finding if note already exists
