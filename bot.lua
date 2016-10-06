@@ -39,21 +39,24 @@ while true do
     s, status, partial = tcp:receive()
     --print(s or partial)
     if status == "closed" then break end
-        s = explode(s," ")
-        --if s[4] then print(s[4].." est le 4") end 
-        if (s[1] == "PING") then
-		tcp:send("PONG"..s[2])
-        elseif ((s[2]=="376") or (s[2]=="422")) then
-		tcp:send("JOIN " .. channel .. " \r\n")
-        elseif (s[4] and (string.match(s[4],"!"))) then
-            
-            --print("OPPO")
-            
-            if file_exists("plugins/"..string.sub(s[4],3)..".lua") then
-                print("Opening script...")
-                --print(s)
-                dofile("plugins/"..string.sub(s[4],3)..".lua")
-            end
+    s = explode(s," ")
+    --if s[4] then print(s[4].." est le 4") end 
+    if (s[1] == "PING") then
+        cp:send("PONG"..s[2])
+    elseif ((s[2]=="376") or (s[2]=="422")) then
+        tcp:send("JOIN " .. channel .. " \r\n")
+    elseif (s[4]) then
+        if ((string.match(s[4],"!"))) and file_exists("plugins/"..string.sub(s[4],3)..".lua") then
+            print("Opening script...")
+            --print(s)
+            dofile("plugins/"..string.sub(s[4],3)..".lua")
+        elseif ((string.lower(s[4]) == ":bonjour") or 
+                (string.lower(s[4]) == ":salut") or 
+                (string.lower(s[4]) == ":plop") or
+                (string.lower(s[4]) == ":yo" )) then
+
+            msg("Yo, bien ou bien ?")
+        end
     end
 end
 tcp:close()
