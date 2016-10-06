@@ -19,7 +19,7 @@ if (s[6] == "=") then
     print(text)
     text, nboccur = string.gsub(text,"%f[^\0\n]"..s[5] .." = ([^\n]+)",notedt)
     if (nboccur == 0) then
-        text = s[5] .. " = " .. notedt .. "\n"
+        text = text .. s[5] .. " = " .. notedt .. "\n"
     end
     notefile:write(text)
     msg("Okey Dokey !")
@@ -34,9 +34,9 @@ elseif (s[5]) then
         notedtex = explode(v," ")
         if (notedtex[1] == s[5]) then
             notedt = table.concat(notedtex," ",3)
+            msg(notedt)
         end
 
     end
-    msg(notedt)
     notefile:close()
 end

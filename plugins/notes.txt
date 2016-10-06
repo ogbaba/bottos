@@ -1,1 +1,3 @@
-Bonjour à tous, c'est squeezie !
+##ENTER YOUR NOTES HERE##
+hello = Salut à tous c'est Squeezie
+groupe = Le seul groupe est le 4 !
