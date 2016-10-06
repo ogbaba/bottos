@@ -1,35 +1,35 @@
+function lines_from(file)
+    lines = {}
+    for line in io.lines(file) do
+        lines[#lines +1] = line
+    end
+    return lines
+end
+
+
 -- If setting a note
 if (s[6] == "=") then
-    notefile = io.open("notes.txt","w")
-    print(io.open("notes.txt","w"))
+    notefile = io.open("plugins/notes.txt","w")
+    lines = lines_from("plugins/notes.txt")
+    file:seek("set")
 -- Finding if note already exists
-    for c in notefile:lines() do
-        notedtex = explode(notefile:seek(c-1):read()," ")
-        notedt = ""
-        for k,v in pairs(s) do
-            if (v>6) then
-                notedt = notedt .. s[v]
-            end
-        end
-        if (notedtex[1] == s[5]) then
-            notefile:write(s[6] .. " = " .. notedt)
-        end
-    end
+    notedt = table.concat(s," ",7)
+    text = notefile:read("a")
+    text = string.gsub(text,s[5] .. " = %w ")
+    notefile:close()
+
 elseif (s[5]) then
 
-    notefile = io.open("notes.txt","r")
+    notefile = io.open("plugins/notes.txt","r")
+    lines = lines_from("plugins/notes.txt")
     notefile:seek("set")
-    msg(notefile:read("a"))
-    for c in notefile:lines() do
-        notedtex = explode(read("a")," ")
-        notedt = "" 
+    for k,v in pairs(lines) do
+        notedtex = explode(v," ")
         if (notedtex[1] == s[5]) then
-            notedt = table.concat(notedtex," ",2)
+            notedt = table.concat(notedtex," ",3)
             msg(notedt)
         end
 
     end
-    msg(notedt)
-    msg("RECI")
     notefile:close()
 end

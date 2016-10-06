@@ -3,7 +3,9 @@ if (tonumber(s[5]) and tonumber(s[6])) then
         max = s[6]
         msg("Devinez un nombre entre "..min.." et ".. max)
         math.randomseed(os.time())
-        nb = math.random(min,max)
+        if (min < max) then
+            nb = math.random(min,max)
+        end
 elseif (tonumber(s[5]) and nb) then
         guess = tonumber(s[5])
         if (guess < nb) then
