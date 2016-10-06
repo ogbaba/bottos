@@ -4,7 +4,7 @@ if (tonumber(s[5]) and tonumber(s[6])) then
         msg("Devinez un nombre entre "..min.." et ".. max)
         math.randomseed(os.time())
         nb = math.random(min,max)
-elseif (tonumber(s[5])) then
+elseif (tonumber(s[5]) and nb) then
         guess = tonumber(s[5])
         if (guess < nb) then
             msg("Plus grand")
@@ -14,5 +14,5 @@ elseif (tonumber(s[5])) then
             msg("Bravo, le nombre etait ".. nb)
         end
 else
-    msg("C'est pas un nombre wallah")
+    msg("Erreur...")
 end

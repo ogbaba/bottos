@@ -21,8 +21,9 @@ function explode(str, div)
     return o
 end
 function msg(s)
-    tcp:send("PRIVMSG " .. channel .." :".. s .." \r\n " )
-
+    if (s) then
+        tcp:send("PRIVMSG " .. channel .." :".. s .." \r\n " )
+    end
 end
 function file_exists(name)
        local f=io.open(name,"r")
