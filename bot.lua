@@ -42,7 +42,7 @@ while true do
     s = explode(s," ")
     --if s[4] then print(s[4].." est le 4") end 
     if (s[1] == "PING") then
-        cp:send("PONG"..s[2])
+        tcp:send("PONG"..table.concat(s," ",2))
     elseif ((s[2]=="376") or (s[2]=="422")) then
         tcp:send("JOIN " .. channel .. " \r\n")
     elseif (s[4]) then
