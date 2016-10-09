@@ -15,8 +15,6 @@ elseif (tonumber(s[5]) and nb) then
         else
             msg("Bravo, le nombre etait ".. nb)
         end
-elseif (tonumber(s[5])) then
-    msg("Générez un nombre avec !devin min max")
 else
-    msg("Erreur...")
+    msg("Générez un nombre avec !devin min max, devinez avec !devin nombre.")
 end
