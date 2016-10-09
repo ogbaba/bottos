@@ -4,7 +4,7 @@ A lua IRC bot.
 
 ## Dependencies
 
-- lua
+- lua 5.3
 
 - lua-socket
 
