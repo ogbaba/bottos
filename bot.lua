@@ -2,7 +2,7 @@ local host = "chat.freenode.net"
 local port = 6667
 local socket = require("socket")
 local tcp = assert(socket.tcp())
-local botname = "Bottos"
+local botname = "LeBot"
 local ident = "Bottos"
 local gecos = "Bot de Baba"
 local channel = "##aixinfo"
@@ -42,7 +42,7 @@ while true do
     s = explode(s," ")
     --if s[4] then print(s[4].." est le 4") end 
     if (s[1] == "PING") then
-        tcp:send("PONG"..table.concat(s," ",2))
+        tcp:send("PONG "..table.concat(s," ",2).."\r\n")
     elseif ((s[2]=="376") or (s[2]=="422")) then
         tcp:send("JOIN " .. channel .. " \r\n")
     elseif (s[4]) then
