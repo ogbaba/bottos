@@ -1,6 +1,6 @@
 local list = assert(io.popen('/bin/echo plugins/*.lua'))
 local output = list:read()
-output = string.gsub(output,plugins/," ")
-output = string.gsub(output,.lua,"")
+output = string.gsub(output,"plugins/"," ")
+output = string.gsub(output,".lua","")
 list:close()
 msg(output)
