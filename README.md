@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ogbaba/bottos.svg?branch=master)](https://travis-ci.org/ogbaba/bottos)
 # bottos
 
 A lua IRC bot.
